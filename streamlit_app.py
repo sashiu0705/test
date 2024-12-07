@@ -1,7 +1,12 @@
 import streamlit as st
 import random
+import pygame
+from io import BytesIO
 
-# リンパマッサージをするべき場所のリストとその説明・マッサージ方法
+# 初期化
+pygame.mixer.init()
+
+# リンパマッサージ場所とその説明、マッサージ方法
 lymphatic_points = {
     "首（首筋、鎖骨周辺）": {
         "description": "首と鎖骨周辺にはリンパ節が集中しており、ここをマッサージすることで顔や首周りのむくみを改善できます。",
@@ -25,26 +30,28 @@ lymphatic_points = {
     }
 }
 
-# 人体についての豆知識
-human_body_facts = [
+# 人体と精神に関する豆知識
+human_facts = [
     "人体には約10万キロメートルの血管があり、これを繋げると地球を2周半できます。",
-    "リンパ液は、身体の免疫機能をサポートし、細菌やウイルスを排除する役割を持っています。",
-    "成人の体内には約37兆個の細胞があり、それらの細胞は常に新陳代謝を繰り返しています。",
-    "人間の皮膚は、体重の約16%を占め、身体で最も大きな臓器です。",
+    "精神的な健康と身体の健康は密接に関わっており、リラックスした状態が免疫力を高めます。",
 ]
 
-# Streamlitアプリのタイトル
+# 人体に関する簡単な問題
+body_question = {
+    "問題": "人体における最大の臓器はどれでしょう？",
+    "選択肢": ["心臓", "皮膚", "肝臓", "脳"],
+    "正解": "皮膚"
+}
+
+# アプリのタイトルと説明
 st.title("今日の夜、リンパマッサージをするべき場所")
+st.write("リラックスした夜を過ごすために、リンパマッサージをしましょう！")
+st.write("下記の3つのリンパマッサージ場所をランダムに提案します。")
 
-# アプリの説明
-st.write("今日の夜、リラックスするためにリンパマッサージをしてみましょう！ 3つの場所をランダムに提案します。")
-st.write("以下に紹介するマッサージ方法を試して、気持ちよくリフレッシュしましょう！")
-
-# ボタンが押されたときにランダムに3つのリンパマッサージ場所を選ぶ
+# ボタンを押してランダムに3つの場所を提案
 if st.button("リンパマッサージ場所を提案"):
     selected_points = random.sample(list(lymphatic_points.keys()), 3)
 
-    # 提案されたリンパマッサージ場所を表示
     for i, point in enumerate(selected_points, 1):
         st.write(f"### {i}. {point}")
         st.write(f"**説明**: {lymphatic_points[point]['description']}")
@@ -52,9 +59,23 @@ if st.button("リンパマッサージ場所を提案"):
         st.write("")  # 空行を挿入
 
     # 応援メッセージ
-    st.write("素晴らしい！リンパマッサージで身体のリフレッシュを楽しんでください。健康と美しさのために毎日のケアを続けましょう！")
+    st.write("素晴らしい！リンパマッサージでリラックスして、心と体をケアしましょう！")
 
-    # 人体についての豆知識をランダムに表示
+    # 豆知識
     st.write("#### 今日の豆知識:")
-    st.write(random.choice(human_body_facts))
+    st.write(random.choice(human_facts))
+
+    # 音楽再生
+    st.write("リラックスした雰囲気でリンパマッサージを楽しんでください。下の音楽を聴いてリラックスしましょう。")
+    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", format="audio/mp3")
+
+    # 簡単な問題
+    st.write(f"#### 問題: {body_question['問題']}")
+    st.write("選択肢:")
+    for choice in body_question['選択肢']:
+        st.write(f"- {choice}")
+
+    # 正解を表示するボタン
+    if st.button("答えを表示"):
+        st.write(f"正解は: {body_question['正解']}です！")
 
