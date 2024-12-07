@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import pygame
 from io import BytesIO
 
 # 初期化
