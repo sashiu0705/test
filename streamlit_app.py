@@ -65,7 +65,4 @@ if st.button("リンパマッサージ場所を提案"):
     st.write("#### 今日の豆知識:")
     st.write(random.choice(human_facts))
 
-    # 音楽再生
-    st.write("リラックスした雰囲気でリンパマッサージを楽しんでください。下の音楽を聴いてリラックスしましょう。")
-    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", format="audio/mp
 
