@@ -2,9 +2,6 @@ import streamlit as st
 import random
 from io import BytesIO
 
-# 初期化
-pygame.mixer.init()
-
 # リンパマッサージ場所とその説明、マッサージ方法
 lymphatic_points = {
     "首（首筋、鎖骨周辺）": {
