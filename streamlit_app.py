@@ -67,15 +67,5 @@ if st.button("リンパマッサージ場所を提案"):
 
     # 音楽再生
     st.write("リラックスした雰囲気でリンパマッサージを楽しんでください。下の音楽を聴いてリラックスしましょう。")
-    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", format="audio/mp3")
-
-    # 簡単な問題
-    st.write(f"#### 問題: {body_question['問題']}")
-    st.write("選択肢:")
-    for choice in body_question['選択肢']:
-        st.write(f"- {choice}")
-
-    # 正解を表示するボタン
-    if st.button("答えを表示"):
-        st.write(f"正解は: {body_question['正解']}です！")
+    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", format="audio/mp
 
